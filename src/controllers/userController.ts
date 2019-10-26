@@ -85,6 +85,14 @@ export default class UserController {
 				if (user.password !== undefined) {
 					user.password = await userFound.setPassword(user.password)
 				}
+				if (user.provider) {
+					if (!user.cpf || !user.gender || !user.phone) {
+						return res.status(400).send({
+							status: 'error',
+							data: { error: 'Required fields are missing. (cpf, gender or phone)' }
+						})
+					}
+				}
 				models.User.findOneAndUpdate(
 					{ _id: req.params.id },
 					{ ...user },
