@@ -79,6 +79,7 @@ export default class UserController {
 
 	public updateUser = async (req: Request, res: Response): Promise<any> => {
 		try {
+			console.log(req.body)
 			const user = req.body
 			const userFound = await models.User.findById(req.params.id)
 			if (userFound) {

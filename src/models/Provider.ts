@@ -21,6 +21,10 @@ const providerSchema = new Schema(
     gallery: {
       type: Array,
       select: true
+    },
+    description: {
+      type: String,
+      select: true
     }
   },
   {

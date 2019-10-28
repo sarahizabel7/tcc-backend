@@ -19,6 +19,7 @@ export default class ProviderController {
                                 { "name": {"$regex": regex} },
                                 { "lastname": {"$regex": regex} },
                                 { "email": {"$regex": regex} },
+                                { "provider.description": {"$regex": regex} },
                                 { "provider.provided_services": {
                                     "$elemMatch":
                                         {
@@ -47,6 +48,13 @@ export default class ProviderController {
                     status: 'error',
                     data: { error: 'Users not found.' }
                 })
+            }
+            for (let i = 0; i < users.length; i++) {
+                let grade = 0;
+                for (let j = 0; j < users[i].provider.rating.length; j++) {
+                    grade = grade + users[i].provider.rating[j].grade;
+                }
+                users[i].provider.rating = grade / users[i].provider.rating.length;
             }
 			return res.status(200).send({
 				status: 'ok',

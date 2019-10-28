@@ -92,6 +92,7 @@ userSchema.methods.toAuthJSON = function() {
     email: this.email,
     avatar: this.avatar,
     isProvider: this.provider ? true : false,
+    provider: this.provider,
     token: this.generateJWT()
   };
 };

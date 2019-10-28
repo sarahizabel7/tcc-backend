@@ -24,5 +24,5 @@ export default (app: Express) => {
 
   app.get("/user/:id", auth.required, controller.getUser);
 
-  app.get("/search-services/:search*?", auth.required, providercontroller.searchServices);
+  app.get("/search-services/:search*?", auth.optional, providercontroller.searchServices);
 };
