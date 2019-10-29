@@ -9,7 +9,7 @@ const providercontroller = new ProviderController();
 const validator = new Validator();
 
 export default (app: Express) => {
-  app.post("/login", auth.optional, validator.loginValidator, controller.login);
+  app.post("/login", validator.loginValidator, controller.login);
 
   app.post("/logout", auth.required, controller.logout);
 
