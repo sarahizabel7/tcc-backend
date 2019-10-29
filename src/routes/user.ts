@@ -15,7 +15,6 @@ export default (app: Express) => {
 
   app.post(
     "/user",
-    auth.optional,
     validator.registerUserValidator,
     controller.registerUser
   );
